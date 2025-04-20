@@ -1,3 +1,6 @@
+# Astro-generated local files
+.astro/
+
 # Python
 __pycache__/
 *.pyc
