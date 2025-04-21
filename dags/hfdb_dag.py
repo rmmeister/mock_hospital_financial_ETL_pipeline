@@ -10,7 +10,7 @@ default_args = {
     "owner": "airflow",
     "depends_on_past": False,
     "start_date": datetime(2025, 4, 4),
-    "retries": 1,
+    "retries": 2,
     "retry_delay": timedelta(minutes=1),
 }
 
@@ -19,7 +19,8 @@ with DAG(
     "data_pipeline",
     default_args=default_args,
     schedule_interval="@hourly",  # correct
-    catchup=False,
+    catchup=False, 
+    tags=["hfdb", "healthcare", "financial"],
 ) as dag:
     
     extract_task = PythonOperator(
@@ -39,17 +40,3 @@ with DAG(
 
     # Task dependencies
     extract_task >> preprocess_task >> load_task
-
-
-# from airflow import DAG
-# from airflow.operators.empty import EmptyOperator
-# from datetime import datetime
-
-# with DAG(
-#     dag_id="simple_test_dag",
-#     start_date=datetime(2024, 4, 10),
-#     schedule_interval="@hourly",
-#     catchup=False
-# ) as dag:
-
-#     start = EmptyOperator(task_id="start")
