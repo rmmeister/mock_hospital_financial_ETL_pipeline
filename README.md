@@ -14,12 +14,13 @@ This project uses Astronomer CLI and Apache Airflow to run an ETL pipeline for h
     brew install astronomer/tap/astro
 
 2. Start the Airflow environment:
+    astro dev init
     astro dev start
 
-3. Visit Airflow UI at:
+4. Visit Airflow UI at:
     http://localhost:8080
 
-4. Stop the environment:
+5. Stop the environment:
     astro dev stop
 
 ## Dependencies
